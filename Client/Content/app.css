@@ -1,1 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora&family=Roboto:wght@300&display=swap');
+
 /* Custom CSS Goes Here */
+body {
+    font-family: 'Lora', serif;
+    font-family: 'Roboto', sans-serif;
+}
+
+.navbar-dark {
+    background-color: #a50044;
+}
+
+h1 {
+    color: #004d98;
+}
+
+main {
+    padding-top: 20px;
+}
