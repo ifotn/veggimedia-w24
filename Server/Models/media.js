@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 
 // define schema for Media object
 let mediaSchema = new mongoose.Schema({
+    type: {
+        type: String,
+        required: true
+    },
     title: {
         type: String,
         required: true
