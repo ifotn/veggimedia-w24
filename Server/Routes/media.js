@@ -18,4 +18,9 @@ router.post('/create', (req, res, next) => {
     mediaController.createMedia(req, res, next);
 });
 
+/* GET: /media/delete/abc123 => delete selected Media doc */
+router.get('/delete/:_id', (req, res, next) => {
+    mediaController.deleteMedia(req, res, next);
+});
+
 module.exports = router;

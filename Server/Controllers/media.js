@@ -16,7 +16,7 @@ let displayCreateForm = (req, res, next) => {
     res.render('media/create', { title: 'Add New Media' });
 };
 
-let createMedia = async(req, res, next) => {
+let createMedia = async (req, res, next) => {
     // save new media to DB
     await Media.create(req.body);
 
@@ -24,7 +24,16 @@ let createMedia = async(req, res, next) => {
     res.redirect('/media');
 };
 
+let deleteMedia = async (req, res, next) => {
+    // remove selected doc
+    await Media.findByIdAndDelete(req.params._id);
+    // await Media.deleteOne({ _id: req.params._id }); - this works too
+
+    // redirect
+    res.redirect('/media');
+};
+
 // make public
 module.exports = {
-    index, displayCreateForm, createMedia
+    index, displayCreateForm, createMedia, deleteMedia
 };
