@@ -33,7 +33,16 @@ let deleteMedia = async (req, res, next) => {
     res.redirect('/media');
 };
 
+let displayEditForm = async (req, res, next) => {
+    let media = await Media.findById(req.params._id);
+
+    res.render('media/edit', { 
+        title: 'Update Media',
+        media: media
+    });
+};
+
 // make public
 module.exports = {
-    index, displayCreateForm, createMedia, deleteMedia
+    index, displayCreateForm, createMedia, deleteMedia, displayEditForm
 };

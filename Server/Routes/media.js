@@ -23,4 +23,9 @@ router.get('/delete/:_id', (req, res, next) => {
     mediaController.deleteMedia(req, res, next);
 });
 
+/* GET: /media/edit/abc123 => display blank form */
+router.get('/edit/:_id', (req, res, next) => {
+    mediaController.displayEditForm(req, res, next);
+});
+
 module.exports = router;
