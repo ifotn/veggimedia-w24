@@ -7,7 +7,6 @@ const logger = require('morgan');
 
 // additional dependencies
 const mongoose = require('mongoose');
-const dotenv = require('dotenv');
 
 // Routing modules
 const indexRouter = require('../Routes/index');
