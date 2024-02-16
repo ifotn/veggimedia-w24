@@ -42,7 +42,13 @@ let displayEditForm = async (req, res, next) => {
     });
 };
 
+let updateMedia = async (req, res, next) => {
+    await Media.findByIdAndUpdate(req.params._id, req.body);
+    res.redirect('/media');
+};
+
 // make public
 module.exports = {
-    index, displayCreateForm, createMedia, deleteMedia, displayEditForm
+    index, displayCreateForm, createMedia, deleteMedia, displayEditForm,
+    updateMedia
 };

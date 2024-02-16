@@ -28,4 +28,9 @@ router.get('/edit/:_id', (req, res, next) => {
     mediaController.displayEditForm(req, res, next);
 });
 
+/* POST: /media/edit/abc123 => process form submission for updating */
+router.post('/edit/:_id', (req, res, next) => {
+    mediaController.updateMedia(req, res, next);
+});
+
 module.exports = router;
