@@ -7,6 +7,7 @@ const logger = require('morgan');
 
 // additional dependencies
 const mongoose = require('mongoose');
+const dotenv = require('dotenv');
 
 // Routing modules
 const indexRouter = require('../Routes/index');
@@ -14,8 +15,13 @@ const mediaRouter = require('../Routes/media');
 
 const app = express();
 
+// link to .env file if not in production mode
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
+
 // db connection - must be after express app instantiated
-mongoose.connect('', {})
+mongoose.connect(process.env.CONNECTION_STRING, {})
 .then((res) => { console.log('Connected to MongoDB') })
 .catch((err) => { console.log(`Connection failure: ${err}`) });
 
