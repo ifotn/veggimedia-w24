@@ -11,6 +11,7 @@ const mongoose = require('mongoose');
 // Routing modules
 const indexRouter = require('../Routes/index');
 const mediaRouter = require('../Routes/media');
+const authRouter = require('../Routes/auth');
 
 const app = express();
 
@@ -36,6 +37,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../../Client')));
 app.use(express.static(path.join(__dirname, '../../node_modules')));
 
+app.use('/auth', authRouter);
 app.use('/media', mediaRouter);
 app.use('/', indexRouter);
 
