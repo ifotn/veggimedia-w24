@@ -1,5 +1,7 @@
 <h1>Register</h1>
-
+{{#if messages}}
+<h3 class="alert alert-danger">{{messages}}</h3>
+{{/if}}
 <form method="post">
     <fieldset class="form-group">
         <label for="username" class="col-2 control-label">Username: *</label>
