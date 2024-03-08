@@ -18,4 +18,9 @@ router.get('/login', (req, res, next) => {
     authController.displayLoginForm(req, res, next);
 });
 
+/* POST: /auth/login => process login attempt */
+router.post('/login', (req, res, next) => {
+    authController.submitLogin(req, res, next);
+})
+
 module.exports = router;
