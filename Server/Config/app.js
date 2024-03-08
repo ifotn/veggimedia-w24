@@ -7,6 +7,8 @@ const logger = require('morgan');
 
 // additional dependencies
 const mongoose = require('mongoose');
+const passport = require('passport');
+const session = require('express-session');
 
 // Routing modules
 const indexRouter = require('../Routes/index');
@@ -36,6 +38,24 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../../Client')));
 app.use(express.static(path.join(__dirname, '../../node_modules')));
+
+// passport config BEFORE routers
+app.use(session({
+  secret: process.env.PASSPORT_SECRET,
+  resave: true,
+  saveUninitialized: false
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+// link passport to User model
+const User = require('../Models/user');
+passport.use(User.createStrategy());
+
+// link User model w/passport session mgmt
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 app.use('/auth', authRouter);
 app.use('/media', mediaRouter);
