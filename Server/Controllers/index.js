@@ -10,13 +10,8 @@ const User = require('../Models/user');
  */
 function DisplayHome(req, res, next)
 {
-  /* No need to create a User, but demonstrating how to use the Model */
-  let user = new User();
-  user.username = 'admin';
-  console.log(`username: ${user.username}`);
-
   /* Now Render the hbs page */
-  res.render('index', {title: 'VeggiMedia', page: 'home'});
+  res.render('index', {title: 'VeggiMedia', page: 'home', user: req.user});
 }
 
 function DisplayAbout(req, res, next) {
@@ -24,7 +19,8 @@ function DisplayAbout(req, res, next) {
 
   res.render('about', {
     title: 'About',
-    date: date
+    date: date,
+    user: req.user
   });
 }
 

@@ -26,7 +26,17 @@ let submitRegister = (req, res, next) => {
 };
 
 let displayLoginForm = (req, res, next) => {
-    res.render('auth/login', { title: 'Login' });
+    let messages = '';
+
+    console.log(req.params);
+    if (req.params.invalid) {
+        messages = 'Invalid Login';
+    }
+
+    res.render('auth/login', { 
+        title: 'Login', 
+        messages: messages 
+    });
 };
 
 /*let submitLogin = passport.authenticate('local', {
@@ -38,7 +48,7 @@ let submitLogin = (req, res, next) => {
     passport.authenticate('local', (err, user) => {
         console.log(err);
         if (err) {
-            return res.redirect('/auth/login?invalid=true');
+            return res.redirect('/auth/login/invalid');
         }
         else {
             req.login(user, (err) => {
@@ -46,14 +56,20 @@ let submitLogin = (req, res, next) => {
                     return res.redirect('/media');
                 }
                 else {
-                    return res.redirect('/auth/login?invalid=true');
+                    return res.redirect('/auth/login/invalid');
                 }             
             });
         }
     })(req, res, next);
 };
 
+let logout = (req, res, next) => {
+    req.logout((err) => {
+        return res.redirect('/');
+    })
+};
+
 // make public
 module.exports = {
-    displayRegisterForm, displayLoginForm, submitRegister, submitLogin
+    displayRegisterForm, displayLoginForm, submitRegister, submitLogin, logout
 };

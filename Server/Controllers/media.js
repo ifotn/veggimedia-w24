@@ -8,12 +8,14 @@ let index = async (req, res, next) => {
     console.log(media);
     res.render('media/index', { 
         title: 'Media Library',
-        media: media
+        media: media,
+        user: req.user
     });
 };
 
 let displayCreateForm = (req, res, next) => {
-    res.render('media/create', { title: 'Add New Media' });
+    res.render('media/create', { title: 'Add New Media',
+    user: req.user });
 };
 
 let createMedia = async (req, res, next) => {
@@ -38,7 +40,8 @@ let displayEditForm = async (req, res, next) => {
 
     res.render('media/edit', { 
         title: 'Update Media',
-        media: media
+        media: media,
+        user: req.user
     });
 };
 

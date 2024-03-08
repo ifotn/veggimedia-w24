@@ -14,13 +14,22 @@ router.post('/register', (req, res, next) => {
 });
 
 /* GET: /auth/login => display login form */
-router.get('/login', (req, res, next) => {
+router.get('/login/', (req, res, next) => {
+    authController.displayLoginForm(req, res, next);
+});
+
+router.get('/login/:invalid', (req, res, next) => {
     authController.displayLoginForm(req, res, next);
 });
 
 /* POST: /auth/login => process login attempt */
 router.post('/login', (req, res, next) => {
     authController.submitLogin(req, res, next);
+})
+
+/* GET: /auth/logout => do the obvious */
+router.get('/logout', (req, res, next) => {
+    authController.logout(req, res, next);
 })
 
 module.exports = router;

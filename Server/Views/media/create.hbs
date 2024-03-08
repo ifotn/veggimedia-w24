@@ -34,9 +34,6 @@
         <label for="rating">5-Star Rating: *</label>
         <input type="number" name="rating" id="rating" min="1" max="5">
     </fieldset>
-    <fieldset>
-        <label for="username">Username: *</label>
-        <input name="username" id="username" required />
-    </fieldset>
+    <input name="username" id="username" type="hidden" value="{{user.username}}" />
     <button class="btn btn-primary offset-2">Save</button>
 </form>
